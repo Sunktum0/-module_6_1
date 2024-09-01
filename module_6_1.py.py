@@ -4,12 +4,6 @@ class Animal:
         self.fed = False
         self.name = name
 
-class Plant:
-    def __init__(self, name):
-        self.edible = False
-        self.name = name
-
-class Mammal(Animal):
     def eat(self, food):
         if food.edible:
             print(f"{self.name} съел {food.name}")
@@ -17,6 +11,17 @@ class Mammal(Animal):
         else:
             print(f"{self.name} не стал есть {food.name}")
             self.alive = False
+
+
+class Plant:
+    def __init__(self, name, edible=False):
+        self.edible = edible
+        self.name = name
+
+
+class Mammal(Animal):
+    def eat(self, food):
+        super().eat(food)
 
 class Predator(Animal):
     def eat(self, food):
